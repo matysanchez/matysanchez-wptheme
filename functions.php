@@ -263,31 +263,65 @@ add_theme_support( 'responsive-embeds' );
 
 
 // This function will add ?ver=XXXX at the end of the file
-function AddTimestampToAssets( $assetURI ) {
-    // Get the FULL Relative URL
-    $relativeURL = getcwd() . '/' . ltrim( (str_replace( home_url(), '', $assetURI )), '/' );
-    
-    // Check if the $relativeURL contains "?ver=", if so remove it
-    if ( strpos ($relativeURL, "?ver=") )
-        $relativeURL = explode("?ver=", $relativeURL)[0];
+// Function to pass an array to strpos
+function strposa($haystack, $needle, $offset=0) {
+    if(!is_array($needle)) $needle = array($needle);
+    foreach($needle as $query) {
+        if(strpos($haystack, $query, $offset) !== false) return true; // stop on first true result
+    }
+    return false;
+}
 
-	if ( $relativeURL ) {
+// This function will add ?ver=XXXX at the end of the file
+function AddTimestampToAssets($assetURI)
+{
+
+    $whitelist = array(
+        '127.0.0.1',
+        '::1',
+        'localhost',
+        'localhost:8888'
+    );
+    if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+        return $assetURI;
+        exit;
+    }
+
+    // Do not do versioning for assets that contains the following strings:
+    $array  = array('divi-builder', 'jquery', 'api.min', '');
+    if (strposa($assetURI, $array, 1)) {
+        return $assetURI;
+        exit;
+    }
+
+    // Get the FULL Relative URL
+    $relativeURL = ABSPATH . ltrim((str_replace(home_url()."", '', $assetURI)), '/');
+    // Check if the $relativeURL contains "?ver=", if so remove it
+    if (strpos($relativeURL, "?"))
+        $relativeURL = explode("?", $relativeURL);
+
+    if ($relativeURL[0]) {
         // Get the timestamp using PHP native function
-		$timestamp = filemtime( $relativeURL );
+        $timestamp = filemtime($relativeURL[0]);
         // Add ?ver= parameter with value to the URI
-        $assetURI = add_query_arg( 'ver', $timestamp, $assetURI );
+        $assetURI = remove_query_arg('ver', $assetURI);
+        $assetURI = add_query_arg('resource', $timestamp, $assetURI);
+        $assetURI.= '-matysanchez';
         // Return the final URL
-		return esc_url( $assetURI );
-	}
+        return esc_url($assetURI);
+    } else {
+        return esc_url($relativeURL);
+    }
 }
 
 // This function is going to add two WP filters to pass all the files to the AddTimestampToAssets function
-function LoadAssetsWithVersioning() {
+function LoadAssetsWithVersioning()
+{
     // CSS's
-    add_filter( 'style_loader_src', 'AddTimestampToAssets' );
+    add_filter('style_loader_src', 'AddTimestampToAssets');
     // JS's
-    add_filter( 'script_loader_src', 'AddTimestampToAssets' );
+    add_filter('script_loader_src', 'AddTimestampToAssets');
 }
 // Let's force WP to run LoadAssetsWithVersioning when initialazing the site
-if ( !is_admin() )
+if (!is_admin())
     add_action('init', 'LoadAssetsWithVersioning');
