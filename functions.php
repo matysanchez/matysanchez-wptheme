@@ -289,7 +289,7 @@ function AddTimestampToAssets($assetURI)
 
     // Do not do versioning for assets that contains the following strings:
     $array  = array('divi-builder', 'jquery', 'api.min', '');
-    if (strposa($assetURI, $array, 1)) {
+    if (isset($assetURI) && strposa($assetURI, $array, 1)) {
         return $assetURI;
         exit;
     }
