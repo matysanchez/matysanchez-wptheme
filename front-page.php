@@ -2,7 +2,7 @@
 <main id="home" class="container">
     <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar("Home About")) : endif; ?>
     <!-- RECENT ARTICLES -->
-    <h2 class="title">My Recent Articles</h2>
+    <h2 class="title">Mis Últimos Contenidos</h2>
     <div class="row recent-articles">
         <?php
         $args = array(
@@ -34,11 +34,11 @@
         wp_reset_query();
         ?>
         <div class="clearfix"></div>
-        <p><a class="cta" href="/blog/">GO TO THE BLOG</a></p>
+        <p><a class="cta" href="/blog/">VER MÁS CONTENIDO</a></p>
     </div>
     <!-- /RECENT ARTICLES -->
     <!-- WHAT I LOVE DOING -->
-    <h2 class="title">What I love Doing</h2>
+    <h2 class="title">¿Qué me gusta hacer?</h2>
     <div class="row love-doing">
         <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar("Skills")) : endif; ?>
     </div>
@@ -72,7 +72,7 @@
         wp_reset_query();
         ?>
         <div class="clearfix"></div>
-        <p><a class="cta" href="/portfolio/">SEE MORE ABOUT MY EXPERIENCE</a></p>
+        <p><a class="cta" href="/portfolio/">VER MÁS SOBRE MI EXPERIENCIA</a></p>
     </div>
     <!-- /EXPERIENCE -->
 </main>
