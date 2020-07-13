@@ -1,3 +1,4 @@
+<?php /* Template Name: Blank */ ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
