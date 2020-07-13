@@ -26,5 +26,6 @@
             </article>
         </div>
     </main>
+    <style>.wpforms-field-container{text-align: center;}</style>
 </body>
 </html>
