@@ -209,13 +209,6 @@ if ( function_exists('register_sidebar') ) {
         'after_title' => '</h1>',
       )
     );
-
-    // What I Love Doing section at home page
-    register_sidebar(array(
-        'name' => 'Skills',
-        'before_widget' => '<div class="third col skill">',
-        'after_widget' => '</div>',
-    ));
 }
 
 

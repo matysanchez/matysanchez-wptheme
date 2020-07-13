@@ -37,12 +37,6 @@
         <p><a class="cta" href="/blog/">VER MÁS CONTENIDO</a></p>
     </div>
     <!-- /RECENT ARTICLES -->
-    <!-- WHAT I LOVE DOING -->
-    <h2 class="title">¿Qué me gusta hacer?</h2>
-    <div class="row love-doing">
-        <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar("Skills")) : endif; ?>
-    </div>
-    <!-- /WHAT I LOVE DOING -->
     <!-- EXPERIENCE -->
     <h2 class="title">Portfolio</h2>
     <div class="row recent-articles">
