@@ -17,7 +17,7 @@ query_posts($args);
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <?php get_template_part('parts/portfolio', 'header'); ?>
                     <p><?php echo substr(get_the_excerpt(get_the_ID()), 0, 500); ?></p>
-                    <a class="cta" href="<?php echo get_permalink(get_the_ID()); ?>">Read More</a>
+                    <a class="cta" href="<?php echo get_permalink(get_the_ID()); ?>">Leer más</a>
                 </article>
         <?php endwhile;
         endif; ?>

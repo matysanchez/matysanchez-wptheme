@@ -5,7 +5,7 @@
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <?php get_template_part('parts/single', 'header'); ?>
-            <p><?php echo substr(get_the_excerpt(get_the_ID()), 0, 300); ?>... <a href="<?php echo get_permalink(get_the_ID()); ?>">Read More</a>.</p>
+            <p><?php echo substr(get_the_excerpt(get_the_ID()), 0, 300); ?>... <a href="<?php echo get_permalink(get_the_ID()); ?>">Leer más</a>.</p>
         </article>
         <?php endwhile; endif; ?>
         <div class="pagination">

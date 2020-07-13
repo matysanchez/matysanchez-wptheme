@@ -27,7 +27,7 @@
                     <time datetime="<?php echo get_the_date('c', $recent["ID"]); ?>" itemprop="datePublished"><?php echo get_the_date(null, $recent["ID"]); ?></time>
                     | <a href="<?php echo get_permalink($recent["ID"]); ?>#disqus_thread">Comments</a>
                 </small>
-                <p><?php echo substr(get_the_excerpt($recent["ID"]), 0, $chars); ?>... <a href="<?php echo get_permalink($recent["ID"]); ?>">Read More</a>.</p>
+                <p><?php echo substr(get_the_excerpt($recent["ID"]), 0, $chars); ?>... <a href="<?php echo get_permalink($recent["ID"]); ?>">Leer más</a>.</p>
                 <div class="clearfix"></div>
             </div>
         <?php }
@@ -59,7 +59,7 @@
                 <small>
                     <time datetime="<?php echo get_the_date('c', $recent["ID"]); ?>" itemprop="datePublished"><?php echo returnFromTo($recent["ID"]); ?></time>
                 </small>
-                <p><?php echo substr(get_the_excerpt($recent["ID"]), 0, 140); ?>... <a href="<?php echo get_permalink($recent["ID"]); ?>">Read More</a>.</p>
+                <p><?php echo substr(get_the_excerpt($recent["ID"]), 0, 140); ?>... <a href="<?php echo get_permalink($recent["ID"]); ?>">Leer más</a>.</p>
                 <div class="clearfix"></div>
             </div>
         <?php }

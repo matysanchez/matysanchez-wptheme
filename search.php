@@ -6,7 +6,7 @@
                     <h1 class="title"><?php printf(esc_html__('Search Results for: %s', 'matysanchez'), get_search_query()); ?></h1>
                     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                         <?php get_template_part('parts/single', 'header'); ?>
-                        <p><?php echo substr(get_the_excerpt(get_the_ID()), 0, 300); ?>... <a href="<?php echo get_permalink(get_the_ID()); ?>">Read More</a>.</p>
+                        <p><?php echo substr(get_the_excerpt(get_the_ID()), 0, 300); ?>... <a href="<?php echo get_permalink(get_the_ID()); ?>">Leer más</a>.</p>
                     </article>
                     <div class="pagination">
                         <?php matysanchez_pagination(); ?>
